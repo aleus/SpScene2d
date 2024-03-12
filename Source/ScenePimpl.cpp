@@ -26,7 +26,7 @@ void ScenePimpl::update() const
     // TODO Сделать отложенный вызов update - в следующей итерации цикла
 
     auto visualObjects = _visualObjects;
-    RenderFilterParams renderFilterParams; // Debug!!! Инициализировать снаружи
+    RenderFilterParams renderFilterParams; // TODO Инициализировать снаружи
 
     for (const auto & renderFilter : _renderFilters)
     {

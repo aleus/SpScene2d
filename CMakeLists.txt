@@ -24,3 +24,5 @@ add_subdirectory(Source)
 # The executable code is here
 add_subdirectory(Examples)
 
+# Submodule RxCpp
+add_subdirectory(3rdparty)
