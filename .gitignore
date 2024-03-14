@@ -32,6 +32,9 @@ Makefile*
 *.qm
 *.prl
 
+# Clion
+.idea/*
+
 # Qt unit tests
 target_wrapper.*
 
