@@ -1,9 +1,16 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import SP 1.0
 
 Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Scend2d Example")
+
+    Scene2d {
+        id: scene2d
+
+        anchors.fill: parent
+    }
 }

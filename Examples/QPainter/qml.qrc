@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Scene2d.qml</file>
     </qresource>
 </RCC>

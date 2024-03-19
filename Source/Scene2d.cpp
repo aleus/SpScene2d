@@ -1,27 +1,27 @@
-#include "Sp/Scene.h"
-#include "ScenePimpl.h"
+#include "Sp/Scene2d.h"
+#include "Scene2dPimpl.h"
 
 using namespace sp;
 
-Scene::Scene()
-    : _pimpl(new ScenePimpl())
+Scene2d::Scene2d(SceneLayers && sceneLayers)
+    : _pimpl(new Scene2dPimpl(std::move(sceneLayers)))
 {
 
 }
 
-Scene::~Scene() = default;
+Scene2d::~Scene2d() = default;
 
-void Scene::add(const std::shared_ptr<const IVisualObject> & visualObject)
+void Scene2d::add(const std::shared_ptr<const IVisualObject> & visualObject)
 {
     _pimpl->add(visualObject);
 }
 
-void Scene::remove(const std::shared_ptr<const IVisualObject> & visualObject)
+void Scene2d::remove(const std::shared_ptr<const IVisualObject> & visualObject)
 {
     _pimpl->remove(visualObject);
 }
 
-void Scene::update()
+void Scene2d::update()
 {
     // TODO Сделать отложенный вызов update - в следующей итерации цикла
     // Для этого нужна интеграция с внешним циклом событий.
