@@ -9,19 +9,17 @@ class QPainter;
 namespace sp
 {
 
-class QPainterScene2dLayerItem;
+class QuickPainterScene2dLayer;
 
 /**
  *  @brief Слоя сцены Scene2d для отрисовки через QPainter в Qt Quick.
  *  @sa QPainterScene2dLayerItem
  */
-class QPainterScene2dLayer final : public Scene2dLayer
+class PainterScene2dLayer final : public Scene2dLayer
 {
 public:
-    QPainterScene2dLayer() = default;
-
-    /** @brief Устанавливает Quick Item, отображающий соотвествующий слой. */
-    void setScene2dLayerItem(QPainterScene2dLayerItem * scene2dLayerItem);
+    PainterScene2dLayer() = default;
+    DELETE_COPY_MOVE_CONSTRUCTOR(PainterScene2dLayer)
 
     /**
      *  @brief Отрисовывает графические объекты на слое через QPainter.
@@ -31,16 +29,19 @@ public:
      */
     void paint(QPainter * painter);
 
-    /** @brief Возвращает размер слоя на сцене. */
-    QSizeF size();
-
     /** @brief Возвращает временный указатель на QPainter во время вызова paint. */
     inline QPainter * painter() const { return _painter; }
+
+    /** @brief Устанавливает Quick Item, отображающий соотвествующий слой. */
+    void setScene2dLayerItem(QuickPainterScene2dLayer * scene2dLayerItem);
+
+    /** @brief Возвращает размер слоя на сцене. */
+    QSizeF size();
 
     void update() final;
 
 private:
-    QPainterScene2dLayerItem * _scene2dLayerItem = nullptr;
+    QuickPainterScene2dLayer * _scene2dLayerItem = nullptr;
     QPainter * _painter = nullptr;
 };
 

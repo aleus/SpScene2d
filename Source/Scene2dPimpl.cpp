@@ -6,7 +6,7 @@
 
 using namespace sp;
 
-Scene2dPimpl::Scene2dPimpl(SceneLayers && sceneLayers)
+Scene2dPimpl::Scene2dPimpl(Scene2dLayers && sceneLayers)
     : _sceneLayers(std::move(sceneLayers))
 {
 }

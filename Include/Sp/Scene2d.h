@@ -15,9 +15,11 @@ class Scene2dPimpl;
 class Scene2d
 {
 public:
-    Scene2d(SceneLayers && sceneLayers);
+    Scene2d(Scene2dLayers && scene2dLayers);
     ~Scene2d();
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2d)
+
+    const Scene2dLayers & scene2dLayers() const;
 
     /** Добавляет визуальный объект на сцену для отображения. */
     void add(const IVisualObjectCPtr & visualObject);

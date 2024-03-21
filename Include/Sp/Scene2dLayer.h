@@ -27,6 +27,6 @@ protected:
 };
 
 /** @brief Контейнер слоёв, используемых в Scene2d. */
-using SceneLayers = std::vector<std::unique_ptr<Scene2dLayer>>;
+using Scene2dLayers = std::vector<std::unique_ptr<Scene2dLayer>>;
 
 } // namespace sp

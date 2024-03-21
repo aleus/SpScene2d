@@ -15,7 +15,7 @@ class IRenderFilter;
 class Scene2dPimpl
 {
 public:
-    Scene2dPimpl(SceneLayers && sceneLayers);
+    Scene2dPimpl(Scene2dLayers && sceneLayers);
     ~Scene2dPimpl();
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2dPimpl)
 
@@ -23,7 +23,6 @@ public:
     void add(const std::vector<IVisualObjectCPtr> & visualObjects);
 
     void remove(const IVisualObjectCPtr & visualObject);
-
     void update() const;
 
 private:
@@ -41,7 +40,7 @@ private:
 
     std::vector<std::unique_ptr<IRenderFilter>> _renderFilters;
 
-    SceneLayers _sceneLayers;
+    Scene2dLayers _sceneLayers;
 };
 
 } // namespace sp

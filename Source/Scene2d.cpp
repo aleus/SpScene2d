@@ -3,10 +3,9 @@
 
 using namespace sp;
 
-Scene2d::Scene2d(SceneLayers && sceneLayers)
-    : _pimpl(new Scene2dPimpl(std::move(sceneLayers)))
+Scene2d::Scene2d(Scene2dLayers && scene2dLayers)
+    : _pimpl(new Scene2dPimpl(std::move(scene2dLayers)))
 {
-
 }
 
 Scene2d::~Scene2d() = default;

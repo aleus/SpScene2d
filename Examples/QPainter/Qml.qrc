@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>PainterScene2dLayer.qml</file>
+    </qresource>
+</RCC>

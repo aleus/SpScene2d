@@ -12,5 +12,6 @@ Window {
         id: scene2d
 
         anchors.fill: parent
+        clip: true
     }
 }
