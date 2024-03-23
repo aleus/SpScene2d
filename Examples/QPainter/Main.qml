@@ -11,6 +11,7 @@ Window {
     Scene2d {
         id: scene2d
 
+        scene2d: AppContext.scene2d
         anchors.fill: parent
         clip: true
     }

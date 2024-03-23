@@ -2,31 +2,29 @@
 
 #include <QPainter>
 
-using namespace sp;
+namespace sp {
 
-QuickPainterScene2dLayer::QuickPainterScene2dLayer()
-{
-}
-
-QuickPainterScene2dLayer::~QuickPainterScene2dLayer()
-{
+QuickPainterScene2dLayer::~QuickPainterScene2dLayer() {
     if (_scene2dLayer) {
         _scene2dLayer->setScene2dLayerItem(nullptr);
     }
 }
 
-void QuickPainterScene2dLayer::paint(QPainter * painter)
-{
+void QuickPainterScene2dLayer::paint(QPainter * painter) {
     if (_scene2dLayer) {
         _scene2dLayer->paint(painter);
+    } else {
+        Q_ASSERT_X(false, "QuickPainterScene2dLayer", "scene2dLayer must be set before first paint");
     }
 }
 
-void QuickPainterScene2dLayer::setScene2dLayer(PainterScene2dLayer * Scene2dLayer)
-{
-    if (_scene2dLayer == Scene2dLayer)
-        return;
+void QuickPainterScene2dLayer::setScene2dLayer(PainterScene2dLayer * scene2dLayer) {
+    if (_scene2dLayer != scene2dLayer) {
+        _scene2dLayer = scene2dLayer;
+        _scene2dLayer->setScene2dLayerItem(this);
 
-    _scene2dLayer = Scene2dLayer;
-    _scene2dLayer->setScene2dLayerItem(this);
+        emit scene2dLayerChanged();
+    }
 }
+
+} // namespace sp

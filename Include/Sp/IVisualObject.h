@@ -16,7 +16,7 @@ public:
     virtual ~IVisualObject() = default;
     DELETE_COPY_MOVE_CONSTRUCTOR(IVisualObject)
 
-    // Debug!!! Заменить Scene2dLayer на константный интерфейс
+    // TODO Заменить Scene2dLayer на константный интерфейс
     virtual void paint(Scene2dLayer & scene2dLayer) const = 0;
 };
 

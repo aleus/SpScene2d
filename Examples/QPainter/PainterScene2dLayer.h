@@ -2,12 +2,12 @@
 
 #include <Sp/Scene2dLayer.h>
 
+#include <QMetaType>
 #include <QSizeF>
 
 class QPainter;
 
-namespace sp
-{
+namespace sp {
 
 class QuickPainterScene2dLayer;
 
@@ -15,10 +15,10 @@ class QuickPainterScene2dLayer;
  *  @brief Слоя сцены Scene2d для отрисовки через QPainter в Qt Quick.
  *  @sa QPainterScene2dLayerItem
  */
-class PainterScene2dLayer final : public Scene2dLayer
-{
+class PainterScene2dLayer final : public Scene2dLayer {
 public:
     PainterScene2dLayer() = default;
+    ~PainterScene2dLayer() override = default;
     DELETE_COPY_MOVE_CONSTRUCTOR(PainterScene2dLayer)
 
     /**
@@ -46,3 +46,5 @@ private:
 };
 
 } // namespace sp
+
+Q_DECLARE_METATYPE(sp::PainterScene2dLayer *)

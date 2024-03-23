@@ -19,6 +19,8 @@ public:
     ~Scene2dPimpl();
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2dPimpl)
 
+    inline const Scene2dLayers & scene2dLayers() const { return _sceneLayers; }
+
     void add(const IVisualObjectCPtr & visualObject);
     void add(const std::vector<IVisualObjectCPtr> & visualObjects);
 

@@ -1,11 +1,17 @@
 #include "Sp/Scene2d.h"
 #include "Scene2dPimpl.h"
 
-using namespace sp;
+namespace sp
+{
 
 Scene2d::Scene2d(Scene2dLayers && scene2dLayers)
     : _pimpl(new Scene2dPimpl(std::move(scene2dLayers)))
 {
+}
+
+const Scene2dLayers & Scene2d::scene2dLayers() const
+{
+    return _pimpl->scene2dLayers();
 }
 
 Scene2d::~Scene2d() = default;
@@ -28,3 +34,5 @@ void Scene2d::update()
 
     _pimpl->update();
 }
+
+} // namespace sp

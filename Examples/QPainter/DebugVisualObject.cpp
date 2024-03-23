@@ -4,7 +4,8 @@
 
 #include <QPainter>
 
-using namespace sp;
+namespace sp
+{
 
 DebugVisualObject::DebugVisualObject()
 {
@@ -27,3 +28,5 @@ void DebugVisualObject::paint(Scene2dLayer & scene2dLayer) const
                       size.height() - 2 * borderWidth,
                       brush);
 }
+
+} // namespace sp

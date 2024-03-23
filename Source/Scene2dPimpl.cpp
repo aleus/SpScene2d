@@ -4,7 +4,8 @@
 
 #include <iterator>
 
-using namespace sp;
+namespace sp
+{
 
 Scene2dPimpl::Scene2dPimpl(Scene2dLayers && sceneLayers)
     : _sceneLayers(std::move(sceneLayers))
@@ -45,3 +46,5 @@ void Scene2dPimpl::passFilters()
         renderFilter->pass(_visualObjectsFiltered, renderFilterParams);
     }
 }
+
+} // namespace sp
