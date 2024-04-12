@@ -33,8 +33,9 @@ QSizeF PainterScene2dLayer::size() {
 }
 
 void PainterScene2dLayer::update() {
-    Q_ASSERT(_scene2dLayerItem);
-    _scene2dLayerItem->update();
+    if (_scene2dLayerItem) {
+        _scene2dLayerItem->update();
+    }
 }
 
 } // namespace sp

@@ -4,8 +4,8 @@
 namespace sp
 {
 
-Scene2d::Scene2d(Scene2dLayers && scene2dLayers)
-    : _pimpl(new Scene2dPimpl(std::move(scene2dLayers)))
+Scene2d::Scene2d(Scene2dLayers && scene2dLayers, RenderFilters && renderFilters)
+    : _pimpl(new Scene2dPimpl(std::move(scene2dLayers), std::move(renderFilters)))
 {
 }
 

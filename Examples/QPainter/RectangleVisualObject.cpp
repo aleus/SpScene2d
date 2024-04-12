@@ -1,4 +1,4 @@
-#include "DebugVisualObject.h"
+#include "RectangleVisualObject.h"
 #include "PainterScene2dLayer.h"
 #include "qsize.h"
 
@@ -7,11 +7,11 @@
 namespace sp
 {
 
-DebugVisualObject::DebugVisualObject()
+RectangleVisualObject::RectangleVisualObject()
 {
 }
 
-void DebugVisualObject::paint(Scene2dLayer & scene2dLayer) const
+void RectangleVisualObject::paint(Scene2dLayer & scene2dLayer) const
 {
     auto & painterScene2dLayer = static_cast<PainterScene2dLayer &>(scene2dLayer);
 

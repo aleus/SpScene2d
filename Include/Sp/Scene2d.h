@@ -1,21 +1,20 @@
 #pragma once
 
 #include "Sp/ConstructorMacros.h"
+#include "Sp/IRenderFilter.h"
 #include "Sp/IVisualObject.h"
 #include "Sp/Scene2dLayer.h"
 
 #include <memory>
 
-namespace sp
-{
+namespace sp {
 
 class Scene2dPimpl;
 
 /** @brief Центральный класс, управляющий отрисовкой 2D-сцены. */
-class Scene2d
-{
+class Scene2d {
 public:
-    Scene2d(Scene2dLayers && scene2dLayers);
+    Scene2d(Scene2dLayers && scene2dLayers, RenderFilters && renderFilters);
     ~Scene2d();
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2d)
 

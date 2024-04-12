@@ -5,10 +5,10 @@
 namespace sp
 {
 
-class DebugVisualObject final : public IVisualObject
+class CircleVisualObject final : public IVisualObject
 {
 public:
-    DebugVisualObject();
+    CircleVisualObject();
 
     void paint(Scene2dLayer & scene2dLayer) const override;
 };

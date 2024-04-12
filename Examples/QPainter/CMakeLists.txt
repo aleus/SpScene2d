@@ -26,7 +26,7 @@ else()
     else()
         add_executable(QPainter
           ${PROJECT_SOURCES}
-        )
+      )
     endif()
 endif()
 
