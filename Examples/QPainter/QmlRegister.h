@@ -5,7 +5,8 @@
 
 #include <QMetaType>
 
-namespace sp {
+namespace sp
+{
 
 void qmlRegister();
 

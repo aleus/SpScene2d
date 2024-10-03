@@ -6,12 +6,15 @@
 #include <QQmlComponent>
 #include <QQmlEngine>
 
-namespace sp {
+namespace sp
+{
 
-QuickScene2d::QuickScene2d() {
+QuickScene2d::QuickScene2d()
+{
 }
 
-void QuickScene2d::setScene2d(Scene2d * scene2d) {
+void QuickScene2d::setScene2d(Scene2d * scene2d)
+{
     if (_scene2d != scene2d) {
         _scene2d = scene2d;
 
@@ -23,7 +26,8 @@ void QuickScene2d::setScene2d(Scene2d * scene2d) {
     }
 }
 
-void QuickScene2d::createLayers() {
+void QuickScene2d::createLayers()
+{
     Q_ASSERT(_scene2d);
 
     auto * layerComponent = new QQmlComponent(qmlEngine(this), ":/PainterScene2dLayer.qml");
@@ -33,12 +37,14 @@ void QuickScene2d::createLayers() {
             Q_ASSERT_X(false, "QuickScene2d", "Can't load component of PainterScene2dLayer.qml");
         } else {
             for (const auto & scene2dLayer : _scene2d->scene2dLayers()) {
+                // TODO Сейчас класс знает о соответствии Quick-элемента и типа слоя. Возможно, стоит вынести.
                 if (auto * painterScene2dLayer = dynamic_cast<PainterScene2dLayer *>(scene2dLayer.get());
                     painterScene2dLayer)
                 {
                     QVariantMap properties{
                         {"parent", QVariant::fromValue(this)},
                         {"scene2dLayer", QVariant::fromValue(painterScene2dLayer)}};
+
                     auto * object = layerComponent->createWithInitialProperties(properties);
                     auto * quickPainterScene2dLayer = qobject_cast<QuickPainterScene2dLayer *>(object);
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Sp/ConstructorMacros.h"
+#include "Sp/IRenderFilter.h"
 #include "Sp/IVisualObject.h"
 #include "Sp/Scene2dLayer.h"
-#include "Sp/IRenderFilter.h"
 
 #include <vector>
 

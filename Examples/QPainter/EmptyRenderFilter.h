@@ -2,9 +2,11 @@
 
 #include <Sp/IRenderFilter.h>
 
-namespace sp {
+namespace sp
+{
 
-class EmptyRenderFilter : public IRenderFilter {
+class EmptyRenderFilter : public IRenderFilter
+{
 public:
     EmptyRenderFilter() = default;
 

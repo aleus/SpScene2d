@@ -4,9 +4,11 @@
 
 #include <QPainter>
 
-namespace sp {
+namespace sp
+{
 
-void PainterScene2dLayer::paint(QPainter * painter) {
+void PainterScene2dLayer::paint(QPainter * painter)
+{
     Q_ASSERT(painter);
     Q_ASSERT(!_painter);
 
@@ -23,16 +25,19 @@ void PainterScene2dLayer::paint(QPainter * painter) {
     _painter = nullptr;
 }
 
-void PainterScene2dLayer::setScene2dLayerItem(QuickPainterScene2dLayer * scene2dLayerItem) {
+void PainterScene2dLayer::setScene2dLayerItem(QuickPainterScene2dLayer * scene2dLayerItem)
+{
     _scene2dLayerItem = scene2dLayerItem;
 }
 
-QSizeF PainterScene2dLayer::size() {
+QSizeF PainterScene2dLayer::size()
+{
     Q_ASSERT(_scene2dLayerItem);
     return _scene2dLayerItem->size();
 }
 
-void PainterScene2dLayer::update() {
+void PainterScene2dLayer::update()
+{
     if (_scene2dLayerItem) {
         _scene2dLayerItem->update();
     }

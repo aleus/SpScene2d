@@ -8,8 +8,7 @@ namespace rx = rxcpp;
 namespace rxsub = rxcpp::subjects;
 namespace rxu = rxcpp::util;
 
-class PainterLayer
-{
+class PainterLayer {
 public:
     PainterLayer(const std::string & name);
     void paint(int);
@@ -18,8 +17,7 @@ private:
     std::string _name;
 };
 
-class Scene2d
-{
+class Scene2d {
 public:
     Scene2d() = default;
 

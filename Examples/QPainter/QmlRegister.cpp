@@ -4,9 +4,11 @@
 
 Q_DECLARE_METATYPE(sp::Scene2d *)
 
-namespace sp {
+namespace sp
+{
 
-void qmlRegister() {
+void qmlRegister()
+{
     qRegisterMetaType<Scene2d *>();
     qRegisterMetaType<PainterScene2dLayer *>();
 

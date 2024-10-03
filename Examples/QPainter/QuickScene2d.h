@@ -7,6 +7,12 @@
 namespace sp
 {
 
+/**
+ * @brief Quick-компонент 2D сцены на базе класса Scene2d.
+ * @details Для инициализации нужно в QML задать свойство scene2d.
+ * При этом создаются дочерние Quick-элементы, соотвествующие слоям,
+ * уже зарегестрированных в объекте scene2d.
+ */
 class QuickScene2d : public QQuickItem
 {
     Q_OBJECT
