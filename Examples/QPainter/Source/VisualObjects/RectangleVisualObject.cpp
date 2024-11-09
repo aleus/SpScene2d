@@ -1,6 +1,6 @@
 #include "RectangleVisualObject.h"
-#include "PainterScene2dLayer.h"
 #include "qsize.h"
+#include <Scene2dLayers/PainterScene2dLayer.h>
 
 #include <QPainter>
 

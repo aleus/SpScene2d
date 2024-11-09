@@ -5,8 +5,6 @@
 #include "Sp/IVisualObject.h"
 #include "Sp/Scene2dLayer.h"
 
-#include <vector>
-
 namespace sp
 {
 
@@ -22,7 +20,7 @@ public:
     inline const Scene2dLayers & scene2dLayers() const { return _sceneLayers; }
 
     void add(const IVisualObjectCPtr & visualObject);
-    void add(const std::vector<IVisualObjectCPtr> & visualObjects);
+    void add(const IVisualObjectsContainer & visualObjects);
 
     void remove(const IVisualObjectCPtr & visualObject);
 
@@ -43,8 +41,8 @@ private:
     // проводить очистку вектора.
     // Кроме этого ввести функции begin/end для удаления нескольких объектов.
     // Лучше использовать RAII-объект для этого.
-    std::vector<IVisualObjectCPtr> _visualObjects;
-    std::vector<IVisualObjectCPtr> _visualObjectsFiltered;
+    IVisualObjectsContainer _visualObjects;
+    IVisualObjectsContainer _visualObjectsDerivative;
 };
 
 } // namespace sp

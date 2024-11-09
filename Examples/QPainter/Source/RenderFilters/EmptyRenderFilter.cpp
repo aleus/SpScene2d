@@ -5,7 +5,9 @@
 namespace sp
 {
 
-void EmptyRenderFilter::pass(std::vector<IVisualObjectCPtr> & /* visualObjects */, const RenderFilterParams & /* renderFilterParams */) const
+void EmptyRenderFilter::pass(const IVisualObjectsContainer & /* visualObjects */,
+                             IVisualObjectsContainer & /* visualObjectsDerivative */,
+                             const RenderFilterParams & /* renderFilterParams */) const
 {
 }
 

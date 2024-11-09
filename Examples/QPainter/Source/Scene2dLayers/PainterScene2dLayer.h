@@ -38,7 +38,7 @@ public:
     void setScene2dLayerItem(QuickPainterScene2dLayer * scene2dLayerItem);
 
     /** @brief Возвращает размер слоя на сцене. */
-    QSizeF size();
+    QSizeF size() const;
 
     void update() final;
 

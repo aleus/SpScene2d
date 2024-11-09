@@ -18,7 +18,7 @@ void PainterScene2dLayer::paint(QPainter * painter)
     _painter->setBackground(Qt::transparent);
     _painter->eraseRect(0, 0, size.width(), size.height());
 
-    for (const auto & visualObject : _visualObjects) {
+    for (const auto & visualObject : visualObjects()) {
         visualObject->paint(*this);
     }
 
@@ -30,7 +30,7 @@ void PainterScene2dLayer::setScene2dLayerItem(QuickPainterScene2dLayer * scene2d
     _scene2dLayerItem = scene2dLayerItem;
 }
 
-QSizeF PainterScene2dLayer::size()
+QSizeF PainterScene2dLayer::size() const
 {
     Q_ASSERT(_scene2dLayerItem);
     return _scene2dLayerItem->size();

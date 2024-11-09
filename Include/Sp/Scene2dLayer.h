@@ -17,13 +17,16 @@ public:
     virtual ~Scene2dLayer() = default;
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2dLayer)
 
-    // Debug!!! Не понятно где должно быть?
-    void setVisualObjects(std::vector<IVisualObjectCPtr> && visualObjects);
+    // Debug!!! Не понятно где должно быть и в каком виде.
+    inline const IVisualObjectsContainer & visualObjects() const { return _visualObjects; }
+
+    void setVisualObjects(const IVisualObjectsContainer & visualObjects);
+    void setVisualObjects(IVisualObjectsContainer && visualObjects);
 
     virtual void update() = 0;
 
-protected:
-    std::vector<IVisualObjectCPtr> _visualObjects;
+private:
+    IVisualObjectsContainer _visualObjects;
 };
 
 /** @brief Контейнер слоёв, используемых в Scene2d. */

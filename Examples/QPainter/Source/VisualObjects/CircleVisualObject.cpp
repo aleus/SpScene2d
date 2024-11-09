@@ -1,6 +1,6 @@
 #include "CircleVisualObject.h"
-#include "PainterScene2dLayer.h"
 #include "qnamespace.h"
+#include <Scene2dLayers/PainterScene2dLayer.h>
 
 #include <QPainter>
 
@@ -13,6 +13,8 @@ CircleVisualObject::CircleVisualObject()
 
 void CircleVisualObject::paint(Scene2dLayer & scene2dLayer) const
 {
+    // TODO Здесь нельзя использовать dynamic_cast из-за просадки производительности.
+    // Нужно попробовать visitor извне
     auto & painterScene2dLayer = static_cast<PainterScene2dLayer &>(scene2dLayer);
 
     QPainter * painter = painterScene2dLayer.painter();

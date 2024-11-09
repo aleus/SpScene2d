@@ -1,6 +1,6 @@
 #include "QmlRegister.h"
-#include "QuickPainterScene2dLayer.h"
 #include "QuickScene2d.h"
+#include "Scene2dLayers/QuickPainterScene2dLayer.h"
 
 Q_DECLARE_METATYPE(sp::Scene2d *)
 

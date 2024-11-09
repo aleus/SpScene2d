@@ -20,7 +20,7 @@ void Scene2dPimpl::add(const std::shared_ptr<const IVisualObject> & visualObject
     _visualObjects.push_back(visualObject);
 }
 
-void Scene2dPimpl::add(const std::vector<IVisualObjectCPtr> & visualObjects)
+void Scene2dPimpl::add(const IVisualObjectsContainer & visualObjects)
 {
     // Debug!!! Не уверен, что нужно перемещение, а не копирование
     std::move(visualObjects.begin(), visualObjects.end(), std::back_inserter(_visualObjects));
@@ -43,19 +43,21 @@ void Scene2dPimpl::update()
     passFilters();
 
     for (auto & sceneLayer : _sceneLayers) {
+        // Здесь нужно передавать отдельный массив для каждого слоя
         // TODO Неэффективная передача массива объектов
-        auto visualObjects = _visualObjectsFiltered;
-        sceneLayer->setVisualObjects(std::move(visualObjects));
+        // Debug!!! Тут неправильное использование
+        sceneLayer->setVisualObjects(_visualObjects);
     }
 }
 
 void Scene2dPimpl::passFilters()
 {
-    _visualObjectsFiltered = _visualObjects;
     RenderFilterParams renderFilterParams; // TODO Инициализировать снаружи
 
     for (const auto & renderFilter : _renderFilters) {
-        renderFilter->pass(_visualObjectsFiltered, renderFilterParams);
+        renderFilter->pass(_visualObjects,
+                           _visualObjectsDerivative,
+                           renderFilterParams);
     }
 }
 

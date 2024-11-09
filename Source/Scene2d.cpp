@@ -21,6 +21,11 @@ void Scene2d::add(const std::shared_ptr<const IVisualObject> & visualObject)
     _pimpl->add(visualObject);
 }
 
+void Scene2d::add(const IVisualObjectsContainer & visualObjects)
+{
+    _pimpl->add(visualObjects);
+}
+
 void Scene2d::remove(const std::shared_ptr<const IVisualObject> & visualObject)
 {
     _pimpl->remove(visualObject);

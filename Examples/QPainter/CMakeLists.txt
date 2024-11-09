@@ -5,12 +5,17 @@ set(CMAKE_AUTORCC ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 
-file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS *.cpp *.h *.qrc)
+set(SOURCE_DIR Source)
+set(QML_DIR QML)
+
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${SOURCE_DIR}/*.cpp ${SOURCE_DIR}/*.h)
+file(GLOB_RECURSE QML_SOURCES CONFIGURE_DEPENDS ${QML_DIR}/*.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(QPainter
         MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
+        ${SOURCES}
+        ${QML_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET QPainter APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -19,21 +24,25 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
     if(ANDROID)
         add_library(QPainter SHARED
-            ${PROJECT_SOURCES}
+            ${SOURCES}
+            ${QML_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(QPainter
-          ${PROJECT_SOURCES}
+            ${SOURCES}
+            ${QML_SOURCES}
       )
     endif()
 endif()
 
+target_include_directories(QPainter PRIVATE ${SOURCE_DIR})
+
 target_link_libraries(QPainter
-  PRIVATE
-  Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick
-  SpScene2d)
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick
+    SpScene2d)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

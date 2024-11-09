@@ -7,12 +7,14 @@
 
 #include <memory>
 
-namespace sp {
+namespace sp
+{
 
 class Scene2dPimpl;
 
 /** @brief Центральный класс, управляющий отрисовкой 2D-сцены. */
-class Scene2d {
+class Scene2d
+{
 public:
     Scene2d(Scene2dLayers && scene2dLayers, RenderFilters && renderFilters);
     ~Scene2d();
@@ -22,6 +24,7 @@ public:
 
     /** Добавляет визуальный объект на сцену для отображения. */
     void add(const IVisualObjectCPtr & visualObject);
+    void add(const IVisualObjectsContainer & visualObjects);
 
     /** Удаляет визуальный объект со сцены. */
     void remove(const IVisualObjectCPtr & visualObject);

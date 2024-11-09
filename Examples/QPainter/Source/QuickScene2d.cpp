@@ -1,6 +1,6 @@
 #include "QuickScene2d.h"
-#include "PainterScene2dLayer.h"
-#include "QuickPainterScene2dLayer.h"
+#include "Scene2dLayers/PainterScene2dLayer.h"
+#include "Scene2dLayers/QuickPainterScene2dLayer.h"
 #include "qqmlcomponent.h"
 
 #include <QQmlComponent>

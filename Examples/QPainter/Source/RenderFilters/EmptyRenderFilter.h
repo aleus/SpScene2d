@@ -5,12 +5,13 @@
 namespace sp
 {
 
-class EmptyRenderFilter : public IRenderFilter
+class EmptyRenderFilter final : public IRenderFilter
 {
 public:
     EmptyRenderFilter() = default;
 
-    void pass(std::vector<IVisualObjectCPtr> & visualObjects,
+    void pass(const IVisualObjectsContainer & visualObjects,
+              IVisualObjectsContainer & visualObjectsDerivative,
               const RenderFilterParams & renderFilterParams) const override;
 };
 
