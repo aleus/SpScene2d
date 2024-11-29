@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Sp/ConstructorMacros.h"
+#include "Sp/Scene2dTypes.h"
 
 #include <memory>
 #include <vector>
@@ -20,8 +21,7 @@ public:
     // TODO Заменить Scene2dLayer на константный интерфейс
     virtual void paint(Scene2dLayer & scene2dLayer) const = 0;
 
-    // Debug!!! Нужно ли вводить BB и его кеширование?
-    // virtual void boundingBox() const = 0;
+    virtual Rect2dF boundingBox() const = 0;
 };
 
 using IVisualObjectPtr = std::shared_ptr<IVisualObject>;

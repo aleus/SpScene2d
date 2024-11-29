@@ -29,7 +29,7 @@ public:
     void update();
 
 private:
-    void passFilters();
+    void passFilters(const RenderFilterParams & renderFilterParams);
 
 private:
     Scene2dLayers _sceneLayers;
@@ -42,7 +42,7 @@ private:
     // Кроме этого ввести функции begin/end для удаления нескольких объектов.
     // Лучше использовать RAII-объект для этого.
     IVisualObjectsContainer _visualObjects;
-    IVisualObjectsContainer _visualObjectsDerivative;
+    IVisualObjectsContainer _visualObjectsFiltered;
 };
 
 } // namespace sp

@@ -5,8 +5,7 @@
 namespace sp
 {
 
-void EmptyRenderFilter::pass(const IVisualObjectsContainer & /* visualObjects */,
-                             IVisualObjectsContainer & /* visualObjectsDerivative */,
+void EmptyRenderFilter::pass(IVisualObjectsContainer & /* visualObjects */,
                              const RenderFilterParams & /* renderFilterParams */) const
 {
 }

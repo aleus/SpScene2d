@@ -3,6 +3,7 @@
 #include "Sp/IVisualObject.h"
 #include <RenderFilters/EmptyRenderFilter.h>
 #include <RenderFilters/SceneClipRenderFilter.h>
+#include <RenderFilters/GeneralizationRenderFilter.h>
 #include <Scene2dLayers/PainterScene2dLayer.h>
 #include <VisualObjects/CircleVisualObject.h>
 #include <VisualObjects/RectangleVisualObject.h>
@@ -35,6 +36,7 @@ int main(int argc, char * argv[])
     RenderFilters renderFilters;
     renderFilters.emplace_back(new SceneClipRenderFilter);
     renderFilters.emplace_back(new EmptyRenderFilter);
+    renderFilters.emplace_back(new GeneralizationRenderFilter);
 
     Scene2d scene2d(std::move(scene2dLayers), std::move(renderFilters));
 

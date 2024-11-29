@@ -1,4 +1,5 @@
 #include "CircleVisualObject.h"
+#include "Sp/Scene2dTypes.h"
 #include "qnamespace.h"
 #include <Scene2dLayers/PainterScene2dLayer.h>
 
@@ -8,6 +9,9 @@ namespace sp
 {
 
 CircleVisualObject::CircleVisualObject()
+    // Debug!!! Для отладки. Нужно передавать через параметры
+    : _center{.x = 95, .y = 95}
+    , _radius(30)
 {
 }
 
@@ -22,10 +26,17 @@ void CircleVisualObject::paint(Scene2dLayer & scene2dLayer) const
 
     QBrush brush(Qt::darkYellow);
 
-    const auto radius = 30;
-    const double borderWidth = 80;
     painter->setBrush(brush);
-    painter->drawEllipse(QRectF(borderWidth, borderWidth, radius, radius));
+    painter->drawEllipse(*reinterpret_cast<const QPointF *>(&_center), _radius, _radius);
+}
+
+Rect2dF CircleVisualObject::boundingBox() const
+{
+    sp::Scene2dFloat width = 2 * _radius;
+    return {.left = _center.x,
+            .top = _center.y,
+            .width = width,
+            .height = width};
 }
 
 } // namespace sp

@@ -5,10 +5,10 @@
 namespace sp
 {
 
-class EmptyRenderFilter final : public IRenderFilter
+class GeneralizationRenderFilter final : public IRenderFilter
 {
 public:
-    EmptyRenderFilter() = default;
+    GeneralizationRenderFilter() = default;
 
     void pass(IVisualObjectsContainer & visualObjects,
               const RenderFilterParams & renderFilterParams) const override;

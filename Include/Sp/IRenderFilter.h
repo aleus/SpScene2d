@@ -16,8 +16,10 @@ public:
     virtual ~IRenderFilter() = default;
     DELETE_COPY_MOVE_CONSTRUCTOR(IRenderFilter)
 
-    virtual void pass(const IVisualObjectsContainer & visualObjects,
-                      IVisualObjectsContainer & visualObjectsDerivative,
+    /** @brief Обработка фильтром визуальных объектов.
+     *  Контейнер visualObjects содержит входной набор объектов и модифицируется
+     *  после прохода функции.  */
+    virtual void pass(IVisualObjectsContainer & visualObjects,
                       const RenderFilterParams & renderFilterParams) const = 0;
 };
 

@@ -10,8 +10,7 @@ class SceneClipRenderFilter final : public IRenderFilter
 public:
     SceneClipRenderFilter() = default;
 
-    void pass(const IVisualObjectsContainer & visualObjects,
-              IVisualObjectsContainer & visualObjectsDerivative,
+    void pass(IVisualObjectsContainer & visualObjects,
               const RenderFilterParams & renderFilterParams) const override;
 };
 

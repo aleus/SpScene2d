@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QRectF>
 #include <Sp/IVisualObject.h>
 
 namespace sp
@@ -11,6 +12,7 @@ public:
     RectangleVisualObject();
 
     void paint(Scene2dLayer & scene2dLayer) const override;
+    Rect2dF boundingBox() const override;
 };
 
 } // namespace sp

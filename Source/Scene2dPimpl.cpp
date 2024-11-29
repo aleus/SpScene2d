@@ -33,30 +33,32 @@ void Scene2dPimpl::remove(const std::shared_ptr<const IVisualObject> & visualObj
 
 void Scene2dPimpl::update()
 {
+    // TODO: Возможна неэффективная фильтрация при каждом обновлении сцены.
+    RenderFilterParams renderFilterParams {
+        .sceneSize{},
+        .clipRect{},
+    };
+    passFilters(renderFilterParams);
+
     // TODO Сделать отложенный вызов update - в следующей итерации цикла
     for (const auto & sceneLayer : _sceneLayers) {
         sceneLayer->update();
     }
 
-    // Debug!!! Выставлено сюда для отладки
-    // Нужно переделать на RxCpp
-    passFilters();
-
     for (auto & sceneLayer : _sceneLayers) {
-        // Здесь нужно передавать отдельный массив для каждого слоя
         // TODO Неэффективная передача массива объектов
-        // Debug!!! Тут неправильное использование
-        sceneLayer->setVisualObjects(_visualObjects);
+        // Здесь нужно передавать отдельный массив для каждого слоя
+        sceneLayer->setVisualObjects(_visualObjectsFiltered);
     }
 }
 
-void Scene2dPimpl::passFilters()
+void Scene2dPimpl::passFilters(const RenderFilterParams & renderFilterParams)
 {
-    RenderFilterParams renderFilterParams; // TODO Инициализировать снаружи
+    // TODO: Стоит оптимизировать копирование с помощью CoW
+    _visualObjectsFiltered = _visualObjects;
 
     for (const auto & renderFilter : _renderFilters) {
-        renderFilter->pass(_visualObjects,
-                           _visualObjectsDerivative,
+        renderFilter->pass(_visualObjectsFiltered,
                            renderFilterParams);
     }
 }

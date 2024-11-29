@@ -5,8 +5,7 @@
 namespace sp
 {
 
-void SceneClipRenderFilter::pass(const IVisualObjectsContainer & /* visualObjects */,
-                                 IVisualObjectsContainer & /* visualObjectsDerivative */,
+void SceneClipRenderFilter::pass(IVisualObjectsContainer & /* visualObjects */,
                                  const RenderFilterParams & /* renderFilterParams */) const
 {
 }
