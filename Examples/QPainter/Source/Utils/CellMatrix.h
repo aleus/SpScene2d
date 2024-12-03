@@ -23,45 +23,41 @@ template <VisualObjectConcept VisualObject>
 class CellMatrix final
 {
 public:
-    CellMatrix(size_t width, size_t height, size_t cellWidth, size_t cellHeight);
+    CellMatrix(Scene2dInt width, Scene2dInt height, Scene2dInt cellWidth, Scene2dInt cellHeight);
 
     using VisualObjectPtr = std::shared_ptr<VisualObject>;
     using VisualObjectsList = std::vector<VisualObjectPtr>;
 
     /** @brief Возвращает массив объектов в ячейке с координатами (x,y). */
     [[nodiscard]]
-    const VisualObjectsList & get(size_t x, size_t y) const;
+    const VisualObjectsList & get(Scene2dInt x, Scene2dInt y) const;
 
     /** @brief Добавляет object в ячейку, соответствующую точке (x,y). */
-    void add(size_t x, size_t y, const VisualObjectPtr & object);
-    void add(size_t x, size_t y, VisualObjectPtr && object);
+    void add(Scene2dInt x, Scene2dInt y, VisualObjectPtr && object);
 
     /** @brief Добавляет object в ячейки, в которых расположен прямоугольник (x,y,width,height). */
-    // TODO Добавить реализацию для копирования объекта
-    // void add(size_t left, size_t top, size_t width, size_t height, const VisualObject & object);
-
-    void add(size_t left, size_t top, size_t width, size_t height, const VisualObjectPtr & object);
-    void add(const Rect2d & rect, const VisualObjectPtr & object);
+    void add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, VisualObjectPtr && object);
+    void add(const Rect2d & rect, VisualObjectPtr && object);
 
     /** @brief Очищает все ячейки матрицы. */
     void clear();
 
 private:
-    inline size_t index(size_t x, size_t y) const
+    inline size_t index(Scene2dInt x, Scene2dInt y) const
     {
         return (x / _cellWidth) * (y / _cellHeight);
     }
 
 private:
-    const size_t _width;
-    const size_t _height;
-    const size_t _cellWidth;
-    const size_t _cellHeight;
+    const Scene2dInt _width;
+    const Scene2dInt _height;
+    const Scene2dInt _cellWidth;
+    const Scene2dInt _cellHeight;
     const size_t _sizeX;
     const size_t _sizeY;
 
-    using Container = std::vector<VisualObjectsList>;
-    Container _container;
+    using FlatMatrix = std::vector<VisualObjectsList>;
+    FlatMatrix _flatMatrix;
 };
 
 } // namespace sp
