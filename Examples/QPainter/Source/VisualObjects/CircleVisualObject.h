@@ -9,7 +9,7 @@ namespace sp
 class CircleVisualObject final : public IVisualObject
 {
 public:
-    CircleVisualObject();
+    CircleVisualObject(sp::Point2dF center, sp::Scene2dFloat radius);
 
     void paint(Scene2dLayer & scene2dLayer) const override;
     Rect2dF boundingBox() const override;

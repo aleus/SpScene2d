@@ -29,6 +29,7 @@ public:
     using VisualObjectsList = std::vector<VisualObjectPtr>;
 
     /** @brief Возвращает массив объектов в ячейке с координатами (x,y). */
+    [[nodiscard]]
     const VisualObjectsList & get(size_t x, size_t y) const;
 
     /** @brief Добавляет object в ячейку, соответствующую точке (x,y). */
@@ -46,7 +47,7 @@ public:
     void clear();
 
 private:
-    inline size_t index(size_t x, size_t y)
+    inline size_t index(size_t x, size_t y) const
     {
         return (x / _cellWidth) * (y / _cellHeight);
     }

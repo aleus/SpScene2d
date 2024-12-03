@@ -8,10 +8,9 @@
 namespace sp
 {
 
-CircleVisualObject::CircleVisualObject()
-    // Debug!!! Для отладки. Нужно передавать через параметры
-    : _center{.x = 95, .y = 95}
-    , _radius(30)
+CircleVisualObject::CircleVisualObject(Point2dF center, Scene2dFloat radius)
+    : _center(center)
+    , _radius(radius)
 {
 }
 

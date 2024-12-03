@@ -1,6 +1,7 @@
 #include "QmlAppContext.h"
 #include "QmlRegister.h"
 #include "Sp/IVisualObject.h"
+#include "Sp/Scene2dTypes.h"
 #include <RenderFilters/EmptyRenderFilter.h>
 #include <RenderFilters/SceneClipRenderFilter.h>
 #include <RenderFilters/GeneralizationRenderFilter.h>
@@ -46,14 +47,16 @@ int main(int argc, char * argv[])
         scene2d.add(rectangle);
 
         IVisualObjectsContainer circles;
-        constexpr std::size_t circlesCount = 3;
+        constexpr std::size_t circlesCount = 30000;
         circles.reserve(circlesCount);
         std::generate_n(std::back_insert_iterator<IVisualObjectsContainer>(circles),
                         circlesCount,
                         []() {
-                            return std::make_shared<CircleVisualObject>();
+                            return std::make_shared<CircleVisualObject>(Point2dF{95., 95.}, 30.);
                         });
         scene2d.add(circles);
+
+        scene2d.add(std::make_shared<CircleVisualObject>(Point2dF{350., 195.}, 20.));
     }
 
     scene2d.update();

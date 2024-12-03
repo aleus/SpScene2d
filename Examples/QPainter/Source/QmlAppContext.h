@@ -19,9 +19,6 @@ public:
     inline Scene2d * scene2d() { return _scene2d; }
     inline const Scene2d * scene2d() const { return _scene2d; }
 
-signals:
-    void debugPrivateSignal(QPrivateSignal);
-
 private:
     Scene2d * _scene2d = nullptr;
 };

@@ -15,11 +15,4 @@ Window {
         anchors.fill: parent
         clip: true
     }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            AppContext.debugPrivateSignal();
-        }
-    }
 }

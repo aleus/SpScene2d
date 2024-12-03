@@ -31,6 +31,7 @@ void Scene2dPimpl::remove(const std::shared_ptr<const IVisualObject> & visualObj
     std::erase(_visualObjects, visualObject);
 }
 
+// TODO: Метод не вызывается, если растянуть окно.
 void Scene2dPimpl::update()
 {
     // TODO: Возможна неэффективная фильтрация при каждом обновлении сцены.
