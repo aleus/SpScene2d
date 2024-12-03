@@ -9,9 +9,7 @@ namespace sp
 struct RenderFilterParams
 {
     sp::Size2d sceneSize;
-    sp::Size2dF clipRect;
     double zoomLevel = 1.0;
-    sp::Point2d cursorPosition;
 };
 
 } // namespace sp

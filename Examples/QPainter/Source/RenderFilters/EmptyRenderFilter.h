@@ -10,7 +10,7 @@ class EmptyRenderFilter final : public IRenderFilter
 public:
     EmptyRenderFilter() = default;
 
-    void pass(IVisualObjectsContainer & visualObjects,
+    void pass(IVisualObjectsCContainer & visualObjects,
               const RenderFilterParams & renderFilterParams) const override;
 };
 

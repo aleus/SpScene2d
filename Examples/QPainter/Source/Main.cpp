@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
         scene2d.add(rectangle);
 
         IVisualObjectsContainer circles;
-        constexpr std::size_t circlesCount = 2;
+        constexpr std::size_t circlesCount = 3;
         circles.reserve(circlesCount);
         std::generate_n(std::back_insert_iterator<IVisualObjectsContainer>(circles),
                         circlesCount,

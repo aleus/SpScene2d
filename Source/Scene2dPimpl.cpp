@@ -34,9 +34,9 @@ void Scene2dPimpl::remove(const std::shared_ptr<const IVisualObject> & visualObj
 void Scene2dPimpl::update()
 {
     // TODO: Возможна неэффективная фильтрация при каждом обновлении сцены.
+    // Debug!!! Заданы параметры по-умолчанию для отладки
     RenderFilterParams renderFilterParams {
-        .sceneSize{},
-        .clipRect{},
+        .sceneSize{640, 380},
     };
     passFilters(renderFilterParams);
 

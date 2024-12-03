@@ -37,10 +37,21 @@ Rect2dF RectangleVisualObject::boundingBox() const
 {
     // Debug!!! boundingBox на всю сцену
     return {
-        .left = 0.5 * std::numeric_limits<double>::lowest(),
-        .top = 0.5 * std::numeric_limits<double>::lowest(),
-        .width = std::numeric_limits<double>::max(),
-        .height = std::numeric_limits<double>::max(),
+        .left = 0.5 * std::numeric_limits<Scene2dFloat>::lowest(),
+        .top = 0.5 * std::numeric_limits<Scene2dFloat>::lowest(),
+        .width = std::numeric_limits<Scene2dFloat>::max(),
+        .height = std::numeric_limits<Scene2dFloat>::max(),
+    };
+}
+
+Rect2d RectangleVisualObject::boundingBoxPx() const
+{
+    // Debug!!! boundingBox на всю сцену
+    return {
+        .left = std::numeric_limits<Scene2dInt >::lowest(),
+        .top = std::numeric_limits<Scene2dInt>::lowest(),
+        .width = std::numeric_limits<Scene2dInt>::max(),
+        .height = std::numeric_limits<Scene2dInt>::max(),
     };
 }
 

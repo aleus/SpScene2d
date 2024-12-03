@@ -13,6 +13,7 @@ public:
 
     void paint(Scene2dLayer & scene2dLayer) const override;
     Rect2dF boundingBox() const override;
+    Rect2d boundingBoxPx() const override;
 };
 
 } // namespace sp

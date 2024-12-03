@@ -1,11 +1,9 @@
-#pragma once
-
 #include "SceneClipRenderFilter.h"
 
 namespace sp
 {
 
-void SceneClipRenderFilter::pass(IVisualObjectsContainer & /* visualObjects */,
+void SceneClipRenderFilter::pass(IVisualObjectsCContainer & /* visualObjects */,
                                  const RenderFilterParams & /* renderFilterParams */) const
 {
 }

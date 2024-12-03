@@ -10,7 +10,7 @@ class GeneralizationRenderFilter final : public IRenderFilter
 public:
     GeneralizationRenderFilter() = default;
 
-    void pass(IVisualObjectsContainer & visualObjects,
+    void pass(IVisualObjectsCContainer & visualObjects,
               const RenderFilterParams & renderFilterParams) const override;
 };
 

@@ -39,4 +39,14 @@ Rect2dF CircleVisualObject::boundingBox() const
             .height = width};
 }
 
+Rect2d CircleVisualObject::boundingBoxPx() const
+{
+    // Debug!!! Вставить проецирование на экран.
+    sp::Scene2dFloat width = 2 * _radius;
+    return {.left = static_cast<sp::Scene2dInt>(_center.x),
+            .top = static_cast<sp::Scene2dInt>(_center.y),
+            .width = static_cast<sp::Scene2dInt>(width),
+            .height = static_cast<sp::Scene2dInt>(width)};
+}
+
 } // namespace sp

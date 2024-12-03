@@ -3,12 +3,12 @@
 namespace sp
 {
 
-void Scene2dLayer::setVisualObjects(const IVisualObjectsContainer & visualObjects)
+void Scene2dLayer::setVisualObjects(const IVisualObjectsCContainer & visualObjects)
 {
     _visualObjects = visualObjects;
 }
 
-void Scene2dLayer::setVisualObjects(IVisualObjectsContainer && visualObjects)
+void Scene2dLayer::setVisualObjects(IVisualObjectsCContainer && visualObjects)
 {
     _visualObjects = std::move(visualObjects);
 }

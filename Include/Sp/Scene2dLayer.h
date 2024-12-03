@@ -18,15 +18,15 @@ public:
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2dLayer)
 
     // Debug!!! Не понятно где должно быть и в каком виде.
-    inline const IVisualObjectsContainer & visualObjects() const { return _visualObjects; }
+    inline const auto & visualObjects() const { return _visualObjects; }
 
-    void setVisualObjects(const IVisualObjectsContainer & visualObjects);
-    void setVisualObjects(IVisualObjectsContainer && visualObjects);
+    void setVisualObjects(const IVisualObjectsCContainer & visualObjects);
+    void setVisualObjects(IVisualObjectsCContainer && visualObjects);
 
     virtual void update() = 0;
 
 private:
-    IVisualObjectsContainer _visualObjects;
+    IVisualObjectsCContainer _visualObjects;
 };
 
 /** @brief Контейнер слоёв, используемых в Scene2d. */

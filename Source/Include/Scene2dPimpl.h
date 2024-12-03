@@ -41,8 +41,8 @@ private:
     // проводить очистку вектора.
     // Кроме этого ввести функции begin/end для удаления нескольких объектов.
     // Лучше использовать RAII-объект для этого.
-    IVisualObjectsContainer _visualObjects;
-    IVisualObjectsContainer _visualObjectsFiltered;
+    IVisualObjectsCContainer _visualObjects;
+    IVisualObjectsCContainer _visualObjectsFiltered;
 };
 
 } // namespace sp

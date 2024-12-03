@@ -19,7 +19,7 @@ public:
     /** @brief Обработка фильтром визуальных объектов.
      *  Контейнер visualObjects содержит входной набор объектов и модифицируется
      *  после прохода функции.  */
-    virtual void pass(IVisualObjectsContainer & visualObjects,
+    virtual void pass(IVisualObjectsCContainer & visualObjects,
                       const RenderFilterParams & renderFilterParams) const = 0;
 };
 

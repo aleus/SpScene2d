@@ -1,11 +1,9 @@
-#pragma once
-
 #include "EmptyRenderFilter.h"
 
 namespace sp
 {
 
-void EmptyRenderFilter::pass(IVisualObjectsContainer & /* visualObjects */,
+void EmptyRenderFilter::pass(IVisualObjectsCContainer & /* visualObjects */,
                              const RenderFilterParams & /* renderFilterParams */) const
 {
 }

@@ -21,11 +21,16 @@ public:
     // TODO Заменить Scene2dLayer на константный интерфейс
     virtual void paint(Scene2dLayer & scene2dLayer) const = 0;
 
+    /** @brief Возвращает описанный прямоугольник визуального объекта в сценических координатах. */
     virtual Rect2dF boundingBox() const = 0;
+
+    /** @brief Возвращает описанный прямоугольник визуального объекта, спроецированного на экран (в пикселях). */
+    virtual Rect2d boundingBoxPx() const = 0;
 };
 
 using IVisualObjectPtr = std::shared_ptr<IVisualObject>;
 using IVisualObjectCPtr = std::shared_ptr<const IVisualObject>;
-using IVisualObjectsContainer = std::vector<IVisualObjectCPtr>;
+using IVisualObjectsContainer = std::vector<IVisualObjectPtr>;
+using IVisualObjectsCContainer = std::vector<IVisualObjectCPtr>;
 
 } // namespace sp
