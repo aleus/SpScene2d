@@ -1,3 +1,6 @@
 [submodule "3rdparty/RxCpp"]
 	path = 3rdparty/RxCpp
 	url = git@github.com:aleus/RxCpp.git
+[submodule "3rdparty/easy_profiler"]
+	path = 3rdparty/easy_profiler
+	url = git@github.com:aleus/easy_profiler.git
