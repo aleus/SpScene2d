@@ -33,7 +33,14 @@ else()
         add_executable(QPainter
             ${SOURCES}
             ${QML_SOURCES}
-      )
+        )
+
+        if (WIN32)
+            add_custom_command(TARGET QPainter POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy -t $<TARGET_FILE_DIR:QPainter> $<TARGET_RUNTIME_DLLS:QPainter>
+                COMMAND_EXPAND_LISTS
+            )
+        endif()
     endif()
 endif()
 
@@ -42,7 +49,9 @@ target_include_directories(QPainter PRIVATE ${SOURCE_DIR})
 target_link_libraries(QPainter
     PRIVATE
     Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick
-    SpScene2d)
+    SpScene2d
+    easy_profiler
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

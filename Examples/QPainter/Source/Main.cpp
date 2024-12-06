@@ -3,8 +3,8 @@
 #include "Sp/IVisualObject.h"
 #include "Sp/Scene2dTypes.h"
 #include <RenderFilters/EmptyRenderFilter.h>
-#include <RenderFilters/SceneClipRenderFilter.h>
 #include <RenderFilters/GeneralizationRenderFilter.h>
+#include <RenderFilters/SceneClipRenderFilter.h>
 #include <Scene2dLayers/PainterScene2dLayer.h>
 #include <VisualObjects/CircleVisualObject.h>
 #include <VisualObjects/RectangleVisualObject.h>
@@ -16,6 +16,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <algorithm>
+#include <easy/profiler.h>
 #include <iterator>
 #include <memory>
 
@@ -23,6 +24,8 @@ using namespace sp;
 
 int main(int argc, char * argv[])
 {
+    EASY_PROFILER_ENABLE
+
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
@@ -69,5 +72,7 @@ int main(int argc, char * argv[])
 
     engine.load("qrc:/Main.qml");
 
-    return app.exec();
+    int result = app.exec();
+    profiler::dumpBlocksToFile("profile.prof");
+    return result;
 }

@@ -5,12 +5,15 @@
 #include <Utils/CellMatrix.h>
 #include <VisualObjects/CircleVisualObject.h>
 
+#include <easy/profiler.h>
+
 namespace sp
 {
 
 void GeneralizationRenderFilter::pass(IVisualObjectsCContainer & visualObjects,
                                       const RenderFilterParams & renderFilterParams) const
 {
+    EASY_FUNCTION()
     // Debug!!! Отладочные параметры cellMatrix
     size_t width = renderFilterParams.sceneSize.width;
     size_t height = renderFilterParams.sceneSize.height;
