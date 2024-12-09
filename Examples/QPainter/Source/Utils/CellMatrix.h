@@ -25,19 +25,20 @@ class CellMatrix final
 public:
     CellMatrix(Scene2dInt width, Scene2dInt height, Scene2dInt cellWidth, Scene2dInt cellHeight);
 
-    using VisualObjectPtr = std::shared_ptr<VisualObject>;
-    using VisualObjectsList = std::vector<VisualObjectPtr>;
+    // Debug!!! Проверяю теорию об использовании одного элемента вместа списка
+    // using VisualObjectsList = std::vector<const VisualObject *>;
 
     /** @brief Возвращает массив объектов в ячейке с координатами (x,y). */
     [[nodiscard]]
-    const VisualObjectsList & get(Scene2dInt x, Scene2dInt y) const;
+    // const VisualObjectsList & get(Scene2dInt x, Scene2dInt y) const;
+    const VisualObject * get(Scene2dInt x, Scene2dInt y) const;
 
     /** @brief Добавляет object в ячейку, соответствующую точке (x,y). */
-    void add(Scene2dInt x, Scene2dInt y, VisualObjectPtr && object);
+    void add(Scene2dInt x, Scene2dInt y, const VisualObject * object);
 
     /** @brief Добавляет object в ячейки, в которых расположен прямоугольник (x,y,width,height). */
-    void add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, VisualObjectPtr && object);
-    void add(const Rect2d & rect, VisualObjectPtr && object);
+    void add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, const VisualObject * object);
+    void add(const Rect2d & rect, const VisualObject * object);
 
     /** @brief Очищает все ячейки матрицы. */
     void clear();
@@ -56,7 +57,9 @@ private:
     const size_t _sizeX;
     const size_t _sizeY;
 
-    using FlatMatrix = std::vector<VisualObjectsList>;
+    // Debug!!!
+    // using FlatMatrix = std::vector<VisualObjectsList>;
+    using FlatMatrix = std::vector<VisualObject *>;
     FlatMatrix _flatMatrix;
 };
 

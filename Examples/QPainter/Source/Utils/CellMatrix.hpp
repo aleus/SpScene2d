@@ -15,13 +15,14 @@ CellMatrix<VisualObject>::CellMatrix(Scene2dInt width, Scene2dInt height, Scene2
     , _cellHeight(cellHeight)
     , _sizeX(width ? (width - 1) / cellWidth + 1 : 0) // округление в большую сторону
     , _sizeY(height ? (height - 1) / cellHeight + 1 : 0)
-    , _flatMatrix(_sizeX * _sizeY)
+    , _flatMatrix(_sizeX * _sizeY, nullptr)
 {
 }
 
 template <VisualObjectConcept VisualObject>
-const typename CellMatrix<VisualObject>::VisualObjectsList &
-CellMatrix<VisualObject>::get(Scene2dInt x, Scene2dInt y) const
+// Debug!!!
+// const typename CellMatrix<VisualObject>::VisualObjectsList &
+const VisualObject * CellMatrix<VisualObject>::get(Scene2dInt x, Scene2dInt y) const
 {
     assert(x < _width && y < _height);
 
@@ -29,35 +30,42 @@ CellMatrix<VisualObject>::get(Scene2dInt x, Scene2dInt y) const
 }
 
 template <VisualObjectConcept VisualObject>
-void CellMatrix<VisualObject>::add(Scene2dInt x, Scene2dInt y, VisualObjectPtr && object)
+void CellMatrix<VisualObject>::add(Scene2dInt x, Scene2dInt y, const VisualObject * object)
 {
     assert(x < _width && y < _height);
     assert(object);
 
-    _flatMatrix[index(x, y)].push_back(std::forward<VisualObjectPtr>(object));
+    _flatMatrix[index(x, y)].push_back(object);
 }
 
 template <VisualObjectConcept VisualObject>
-void CellMatrix<VisualObject>::add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, VisualObjectPtr && object)
+void CellMatrix<VisualObject>::add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, const VisualObject * object)
 {
     assert(left + width < _width && top + height < _height);
     assert(object);
 
-    // TODO Написать более оптимальный алгоритм обхода индексов
-    const Scene2dInt xLast = left + width;
-    const Scene2dInt yLast = top + height;
+    size_t i = index(left, top);
+    const size_t maxY = height ? (height - 1) / (_cellHeight + 1) : 0;
+    const size_t maxX = width ? (width - 1) / (_cellWidth + 1) : 0;
+    const size_t dy = _sizeX;
 
-    for (Scene2dInt y = top; y < yLast; y += _cellHeight) {
-        for (Scene2dInt x = left; x < xLast; x += _cellWidth) {
-            _flatMatrix[index(x, y)].push_back(std::forward<VisualObjectPtr>(object));
+    for (size_t y = 0; y < maxY; ++y, i += dy) {
+        for (size_t x = 0; x < maxX; ++x, ++i) {
+            // Debug!!! Проверяем теорию об одном добавлении
+            // if (VisualObjectsList & cellList = _flatMatrix[i]; cellList.empty()) {
+            //     cellList.push_back(object);
+            // }
+            if (_flatMatrix[i] == nullptr) {
+                _flatMatrix[i] = object;
+            }
         }
     }
 }
 
 template <VisualObjectConcept VisualObject>
-void CellMatrix<VisualObject>::add(const Rect2d & rect, VisualObjectPtr && object)
+void CellMatrix<VisualObject>::add(const Rect2d & rect, const VisualObject * object)
 {
-    add(rect.left, rect.top, rect.width, rect.height, std::forward<VisualObjectPtr>(object));
+    add(rect.left, rect.top, rect.width, rect.height, object);
 }
 
 template <VisualObjectConcept VisualObject>

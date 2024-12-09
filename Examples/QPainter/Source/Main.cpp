@@ -46,11 +46,12 @@ int main(int argc, char * argv[])
 
     // Визуальные объекты для отладки
     {
-        auto rectangle = std::make_shared<RectangleVisualObject>();
-        scene2d.add(rectangle);
+        // Debug!!!
+        // auto rectangle = std::make_shared<RectangleVisualObject>();
+        // scene2d.add(rectangle);
 
         IVisualObjectsContainer circles;
-        constexpr std::size_t circlesCount = 30000;
+        constexpr std::size_t circlesCount = 300000;
         circles.reserve(circlesCount);
         std::generate_n(std::back_insert_iterator<IVisualObjectsContainer>(circles),
                         circlesCount,
