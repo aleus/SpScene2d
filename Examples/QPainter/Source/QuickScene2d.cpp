@@ -5,12 +5,16 @@
 
 #include <QQmlComponent>
 #include <QQmlEngine>
+#include <QDebug> // Debug!!!
+#include <qquickitem.h>
 
 namespace sp
 {
 
 QuickScene2d::QuickScene2d()
 {
+    connect(this, &QQuickItem::widthChanged, this, &QuickScene2d::onWidthChanged);
+    connect(this, &QQuickItem::heightChanged, this, &QuickScene2d::onHeightChanged);
 }
 
 void QuickScene2d::setScene2d(Scene2d * scene2d)
@@ -63,6 +67,18 @@ void QuickScene2d::createLayers()
         connect(layerComponent, &QQmlComponent::statusChanged,
                 this, createItems);
     }
+}
+
+void QuickScene2d::onWidthChanged()
+{
+    // Debug!!! Обновление должно проходить лениво
+    _scene2d->update();
+}
+
+void QuickScene2d::onHeightChanged()
+{
+    // Debug!!! Обновление должно проходить лениво
+    _scene2d->update();
 }
 
 } // namespace sp

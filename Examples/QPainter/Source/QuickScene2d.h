@@ -33,6 +33,8 @@ signals:
 
 private:
     void createLayers();
+    void onWidthChanged();
+    void onHeightChanged();
 
 private:
     Scene2d * _scene2d = nullptr;
