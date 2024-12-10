@@ -19,7 +19,6 @@ concept VisualObjectConcept = std::is_base_of<IVisualObject, VisualObject>::valu
  *
  * @details Координаты точек всегда идут от 0 (т.е. матрица
  */
-template <VisualObjectConcept VisualObject>
 class CellMatrix final
 {
 public:
@@ -31,14 +30,13 @@ public:
     /** @brief Возвращает массив объектов в ячейке с координатами (x,y). */
     [[nodiscard]]
     // const VisualObjectsList & get(Scene2dInt x, Scene2dInt y) const;
-    const VisualObject * get(Scene2dInt x, Scene2dInt y) const;
-
-    /** @brief Добавляет object в ячейку, соответствующую точке (x,y). */
-    void add(Scene2dInt x, Scene2dInt y, const VisualObject * object);
+    bool get(Scene2dInt x, Scene2dInt y) const;
+    bool get(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height) const;
+    bool get(const Rect2d & rect) const;
 
     /** @brief Добавляет object в ячейки, в которых расположен прямоугольник (x,y,width,height). */
-    void add(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height, const VisualObject * object);
-    void add(const Rect2d & rect, const VisualObject * object);
+    void set(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height);
+    void set(const Rect2d & rect);
 
     /** @brief Очищает все ячейки матрицы. */
     void clear();
@@ -59,10 +57,8 @@ private:
 
     // Debug!!!
     // using FlatMatrix = std::vector<VisualObjectsList>;
-    using FlatMatrix = std::vector<VisualObject *>;
+    using FlatMatrix = std::vector<bool>;
     FlatMatrix _flatMatrix;
 };
 
 } // namespace sp
-
-#include "CellMatrix.hpp"
