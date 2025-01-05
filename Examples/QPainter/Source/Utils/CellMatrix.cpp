@@ -2,6 +2,7 @@
 
 #include "CellMatrix.h"
 
+#include <algorithm>
 #include <cassert>
 
 namespace sp
@@ -50,17 +51,15 @@ bool CellMatrix::get(const Rect2d & rect) const
 void CellMatrix::set(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height)
 {
     assert(left + width < _width && top + height < _height);
-    assert(object);
 
-    size_t i = index(left, top);
     const size_t maxY = height ? (height - 1) / (_cellHeight + 1) : 0;
     const size_t maxX = width ? (width - 1) / (_cellWidth + 1) : 0;
     const size_t dy = _sizeX;
 
-    for (size_t y = 0; y < maxY; ++y, i += dy) {
-        for (size_t x = 0; x < maxX; ++x, ++i) {
-            _flatMatrix[i] = true;
-        }
+    auto begin = std::next(_flatMatrix.begin(), index(left, top));
+
+    for (size_t y = 0; y < maxY; ++y, begin += dy) {
+        std::fill_n(begin, maxX, true);
     }
 }
 
