@@ -4,6 +4,7 @@
 #include "Sp/IRenderFilter.h"
 #include "Sp/IVisualObject.h"
 #include "Sp/Scene2dLayer.h"
+#include "Sp/Camera.h"
 
 #include <memory>
 
@@ -32,7 +33,14 @@ public:
     /** Вызывает обновление и перерисовку сцены. */
     void update();
 
+    inline const Camera & camera() const { return _camera; }
+    inline Camera & camera() { return _camera; }
+
+    const Size2d & size() const;
+    void setSize(const Size2d & size);
+
 private:
+    Camera _camera;
     std::unique_ptr<Scene2dPimpl> _pimpl;
 };
 

@@ -14,8 +14,8 @@ class Scene2dLayer;
 class IVisualObject
 {
 public:
-    IVisualObject() = default;
-    virtual ~IVisualObject() = default;
+    IVisualObject();
+    virtual ~IVisualObject();
     DELETE_COPY_MOVE_CONSTRUCTOR(IVisualObject)
 
     // TODO Заменить Scene2dLayer на константный интерфейс

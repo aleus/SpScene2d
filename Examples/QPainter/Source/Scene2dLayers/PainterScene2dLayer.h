@@ -32,6 +32,7 @@ public:
     void paint(QPainter * painter);
 
     /** @brief Возвращает временный указатель на QPainter во время вызова paint. */
+    // TODO Выглядит как опасная практика, т.к. может быть nullptr вне метода paint(...)
     inline QPainter * painter() const { return _painter; }
 
     /** @brief Устанавливает Quick Item, отображающий соотвествующий слой. */

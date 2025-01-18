@@ -5,8 +5,8 @@
 #include <Utils/CellMatrix.h>
 #include <VisualObjects/CircleVisualObject.h>
 
+#include <algorithm>
 #include <easy/profiler.h>
-#include <QDebug>
 
 namespace sp
 {
@@ -15,9 +15,6 @@ void GeneralizationRenderFilter::pass(IVisualObjectsCContainer & visualObjects,
                                       const RenderFilterParams & renderFilterParams) const
 {
     EASY_FUNCTION()
-
-    qDebug();
-    qDebug() << "Debug!!! before" << visualObjects.size();
     // Debug!!! Отладочные параметры cellMatrix
     size_t width = renderFilterParams.sceneSize.width;
     size_t height = renderFilterParams.sceneSize.height;
@@ -47,7 +44,6 @@ void GeneralizationRenderFilter::pass(IVisualObjectsCContainer & visualObjects,
     EASY_BLOCK("Remove 2 step")
     visualObjects.erase(removeIndex, visualObjects.end());
     EASY_END_BLOCK
-    qDebug() << "Debug!!! after" << visualObjects.size();
 }
 
 } // namespace sp

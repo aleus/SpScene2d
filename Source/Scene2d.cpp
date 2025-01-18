@@ -5,7 +5,7 @@ namespace sp
 {
 
 Scene2d::Scene2d(Scene2dLayers && scene2dLayers, RenderFilters && renderFilters)
-    : _pimpl(new Scene2dPimpl(std::move(scene2dLayers), std::move(renderFilters)))
+    : _pimpl(new Scene2dPimpl(std::move(scene2dLayers), std::move(renderFilters), _camera))
 {
 }
 
@@ -38,6 +38,16 @@ void Scene2d::update()
     // Возможно, что это нужно отдать на откуп выше.
 
     _pimpl->update();
+}
+
+const Size2d & Scene2d::size() const
+{
+    return _pimpl->size();
+}
+
+void Scene2d::setSize(const Size2d & size)
+{
+    _pimpl->setSize(size);
 }
 
 } // namespace sp

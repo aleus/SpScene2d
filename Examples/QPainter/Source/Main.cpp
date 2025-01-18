@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
 
     // Визуальные объекты для отладки
     {
-        // Debug!!!
+        // Debug!!! Убран прямоугольник из-за его boundingBox
         // auto rectangle = std::make_shared<RectangleVisualObject>();
         // scene2d.add(rectangle);
 
@@ -62,8 +62,6 @@ int main(int argc, char * argv[])
 
         scene2d.add(std::make_shared<CircleVisualObject>(Point2dF{350., 195.}, 20.));
     }
-
-    scene2d.update();
 
     QmlAppContext qmlAppContext(&scene2d);
 

@@ -5,7 +5,6 @@
 
 #include <QQmlComponent>
 #include <QQmlEngine>
-#include <QDebug> // Debug!!!
 #include <qquickitem.h>
 
 namespace sp
@@ -27,6 +26,47 @@ void QuickScene2d::setScene2d(Scene2d * scene2d)
         }
 
         emit scene2dChanged();
+    }
+}
+
+qreal QuickScene2d::scale() const
+{
+    // Debug!!! Отладочное масштабирование по обоим осям сразау.
+    return _scene2d->camera().scale().x;
+}
+
+void QuickScene2d::setScale(qreal scale)
+{
+    _scene2d->camera().setScale({scale, scale});
+    _scene2d->update();
+
+    emit scaleChanged();
+}
+
+QPointF QuickScene2d::translation() const
+{
+    const auto & translation_ = _scene2d->camera().translation();
+    return {translation_.x, translation_.y};
+}
+
+void QuickScene2d::setTranslation(const QPointF & translation)
+{
+    _scene2d->camera().setTranslation({translation.x(), translation.y()});
+    _scene2d->update();
+
+    emit translationChanged();
+}
+
+void QuickScene2d::componentComplete()
+{
+    QQuickItem::componentComplete();
+
+    _completed = true;
+
+    if (_scene2d && !_scene2d->scene2dLayers().empty() &&
+        size().width() > 0 && size().height() > 0)
+    {
+        _scene2d->update();
     }
 }
 
@@ -69,16 +109,27 @@ void QuickScene2d::createLayers()
     }
 }
 
+void QuickScene2d::updateSize()
+{
+    _scene2d->setSize({static_cast<int>(size().width()), static_cast<int>(size().height())});
+
+    if (_completed) {
+        _scene2d->update();
+    }
+}
+
 void QuickScene2d::onWidthChanged()
 {
-    // Debug!!! Обновление должно проходить лениво
-    _scene2d->update();
+    if (_scene2d->size().width != static_cast<int>(size().width())) {
+        updateSize();
+    }
 }
 
 void QuickScene2d::onHeightChanged()
 {
-    // Debug!!! Обновление должно проходить лениво
-    _scene2d->update();
+    if (_scene2d->size().height != static_cast<int>(size().height())) {
+        updateSize();
+    }
 }
 
 } // namespace sp

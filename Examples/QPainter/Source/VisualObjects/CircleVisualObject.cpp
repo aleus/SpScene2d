@@ -4,6 +4,7 @@
 #include <Scene2dLayers/PainterScene2dLayer.h>
 
 #include <QPainter>
+#include <QDebug>
 
 namespace sp
 {

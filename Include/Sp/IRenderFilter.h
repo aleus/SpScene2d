@@ -12,8 +12,8 @@ namespace sp
 class IRenderFilter
 {
 public:
-    IRenderFilter() = default;
-    virtual ~IRenderFilter() = default;
+    IRenderFilter();
+    virtual ~IRenderFilter();
     DELETE_COPY_MOVE_CONSTRUCTOR(IRenderFilter)
 
     /** @brief Обработка фильтром визуальных объектов.

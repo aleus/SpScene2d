@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Sp/Camera.h"
 #include "Sp/ConstructorMacros.h"
 #include "Sp/IVisualObject.h"
 
@@ -17,15 +18,18 @@ public:
     virtual ~Scene2dLayer() = default;
     DELETE_COPY_MOVE_CONSTRUCTOR(Scene2dLayer)
 
+    inline const Camera & camera() const { return *_camera; }
+    void setCamera(const Camera & camera);
+
     // Debug!!! Не понятно где должно быть и в каком виде.
     inline const auto & visualObjects() const { return _visualObjects; }
-
     void setVisualObjects(const IVisualObjectsCContainer & visualObjects);
-    void setVisualObjects(IVisualObjectsCContainer && visualObjects);
 
     virtual void update() = 0;
 
 private:
+    const Camera * _camera = nullptr;
+    // Debug!!! Не совсем корректно делать прямые зависимости
     IVisualObjectsCContainer _visualObjects;
 };
 

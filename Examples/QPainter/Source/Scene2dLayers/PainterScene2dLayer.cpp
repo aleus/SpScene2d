@@ -18,6 +18,11 @@ void PainterScene2dLayer::paint(QPainter * painter)
     _painter->setBackground(Qt::transparent);
     _painter->eraseRect(0, 0, size.width(), size.height());
 
+    // Debug!!! Проверяем масштабирование сцены
+    _painter->setTransform(
+        QTransform::fromTranslate(camera().translation().x, camera().translation().y) *
+        QTransform::fromScale(camera().scale().x, camera().scale().y));
+
     for (const auto & visualObject : visualObjects()) {
         visualObject->paint(*this);
     }

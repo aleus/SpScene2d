@@ -1,5 +1,3 @@
-#pragma once
-
 #include "CellMatrix.h"
 
 #include <algorithm>
@@ -28,12 +26,14 @@ bool CellMatrix::get(Scene2dInt x, Scene2dInt y) const
 
 bool CellMatrix::get(Scene2dInt left, Scene2dInt top, Scene2dInt width, Scene2dInt height) const
 {
-    size_t i = index(left, top);
     const size_t maxY = height ? (height - 1) / (_cellHeight + 1) : 0;
     const size_t maxX = width ? (width - 1) / (_cellWidth + 1) : 0;
     const size_t dy = _sizeX;
 
-    for (size_t y = 0; y < maxY; ++y, i += dy) {
+    for (size_t y = 0, i = index(left, top);
+         y < maxY;
+         ++y, i += dy)
+    {
         for (size_t x = 0; x < maxX; ++x, ++i) {
             if (_flatMatrix[i])
                 return true;
